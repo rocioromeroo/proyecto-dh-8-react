@@ -4,10 +4,19 @@ import Category from './Category'
 import Metrics from './Metrics';
 let style = {width: "25rem"}
 
-let titulo = ["Products in Data Base"]
-    let cifra = [135]
-    let colorBorde = ["border-left-primary"]
-    let icono = ["fas fa-clipboard-list"]
+let prueba = fetch("http://localhost:3001/api/products")
+                .then((response) => {
+                return response.json();
+                })
+                .then(function(resultado) {
+                
+                console.log(resultado)
+                
+                })
+
+                console.log(prueba);
+   
+    
 
 	function PageContent(props) {
     return (
@@ -23,10 +32,12 @@ let titulo = ["Products in Data Base"]
             <div class="row">
 
                 { /*<!-- Amount of Products in DB -->*/}
-                <Metrics />
+                <Metrics titulo='Total de Produtos' cifra={props.prueba}/>
 
                 {/*<!-- $$$ of all products in DB -->*/}
-                <div class="col-md-4 mb-4">
+                <Metrics titulo='Total de Usuarios' cifra='135'/>
+
+                {/* <div class="col-md-4 mb-4">
                     <div class="card border-left-success shadow h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
@@ -40,10 +51,12 @@ let titulo = ["Products in Data Base"]
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 { /*<!-- Amount of users in DB -->*/}
-                <div class="col-md-4 mb-4">
+                <Metrics titulo='Total de Categorias' cifra='135'/>
+
+                {/* <div class="col-md-4 mb-4">
                     <div class="card border-left-warning shadow h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
@@ -58,7 +71,7 @@ let titulo = ["Products in Data Base"]
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
 
             {/*<!-- Content Row -->*/}
@@ -88,7 +101,7 @@ let titulo = ["Products in Data Base"]
                         <div class="card-body">
                             <div class="row">
 
-                                <Category />
+                                <Category category='Category 01'/>
 
                                 <div class="col-lg-6 mb-4">
                                     <div class="card bg-info text-white shadow">
